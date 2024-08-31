@@ -37,7 +37,7 @@ export const listProducts = (keyword = '', pageNumber = '') => async (
     })
 
     const { data } = await axios.get(
-      `/api/products?keyword=${keyword}&pageNumber=${pageNumber}`
+      `https://second-hand-shop-backend.vercel.app/api/products?keyword=${keyword}&pageNumber=${pageNumber}`
     )
     dispatch({
       type: PRODUCT_LIST_SUCCESS,
@@ -93,7 +93,7 @@ export const deleteProduct = (id) => async (dispatch, getState) => {
     }
 
     await axios.delete(
-      `/api/products/${id}`,
+      `https://second-hand-shop-backend.vercel.app/api/products/${id}`,
 
       config
     )
@@ -139,7 +139,7 @@ export const createProduct = (
     console.log('reached here')
     console.log(config)
     const { data } = await axios.post(
-      `/api/products`,
+      `https://second-hand-shop-backend.vercel.app/api/products`,
       {
         name,
         images: [{ image1 }],
@@ -198,7 +198,7 @@ export const updateProduct = (
     console.log('reached here')
     console.log(config)
     const { data } = await axios.put(
-      `/api/products/${id}`,
+      `https://second-hand-shop-backend.vercel.app/api/products/${id}`,
       {
         name,
         images: [{ image1: image1 }],
@@ -247,7 +247,7 @@ export const createProductReview = (productId, comment) => async (
       },
     }
 
-    await axios.post(`/api/products/${productId}/reviews`, { comment }, config)
+    await axios.post(`https://second-hand-shop-backend.vercel.app/api/products/${productId}/reviews`, { comment }, config)
     dispatch({
       type: PRODUCT_REVIEW_SUCCESS,
     })
