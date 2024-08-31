@@ -42,7 +42,7 @@ export const login = (email, password) => async (dispatch) => {
       },
     }
     const { data } = await axios.post(
-      '/api/users/login',
+      'https://second-hand-shop-backend.vercel.app/api/users/login',
       { email, password },
       config
     )
@@ -96,7 +96,7 @@ export const verify = async (name, email, password, phone_no, address)  => {
     // console.log(phone_no)
 
     const { data } = await axios.post(
-      '/api/users/verificationlink',
+      'https://second-hand-shop-backend.vercel.app/api/users/verificationlink',
       { name, email, password, contact: { phone_no }, address },
       config
     )
@@ -119,7 +119,7 @@ export const register = (name, email, password, phone_no, address) => async (dis
       },
     }
 
-    const { data } = await axios.post('/api/users',  { name, email, password, contact: { phone_no }, address }, config)
+    const { data } = await axios.post('https://second-hand-shop-backend.vercel.app/api/users',  { name, email, password, contact: { phone_no }, address }, config)
     
     dispatch({
       type: USER_REGISTER_SUCCESS,
@@ -198,7 +198,7 @@ export const listUsers = () => async (dispatch, getState) => {
     }
 
     const { data } = await axios.get(
-      '/api/users',
+      'https://second-hand-shop-backend.vercel.app/api/users',
 
       config
     )
@@ -234,7 +234,7 @@ export const deleteUser = (id) => async (dispatch, getState) => {
     }
 
     await axios.delete(
-      `/api/users/${id}`,
+      `https://second-hand-shop-backend.vercel.app/api/users/${id}`,
 
       config
     )
@@ -271,7 +271,7 @@ export const updateUser = (user) => async (dispatch, getState) => {
     }
     console.log(config)
     // console.log(id)
-    const { data } = await axios.put(`/api/users/${user._id}`, user, config)
+    const { data } = await axios.put(`https://second-hand-shop-backend.vercel.app/api/users/${user._id}`, user, config)
     dispatch({
       type: USER_UPDATE_SUCCESS,
       payload: data,
@@ -305,7 +305,7 @@ export const getUserDetails = (id) => async (dispatch, getState) => {
       },
     }
 
-    const { data } = await axios.get(`/api/users/${id}`, config)
+    const { data } = await axios.get(`https://second-hand-shop-backend.vercel.app/api/users/${id}`, config)
 
     dispatch({
       type: USER_DETAILS_SUCCESS,
